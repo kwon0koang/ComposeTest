@@ -6,6 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Surface
@@ -43,8 +46,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyApp() {
-    Column(modifier = Modifier.padding(vertical = 5.dp)) {
-        for (i in 1..5) {
+    val scrollState = rememberScrollState()
+
+    Column(modifier = Modifier
+        .padding(vertical = 5.dp)
+        .verticalScroll(scrollState)
+    ) {
+        for (i in 1..30) {
             Greeting(name = "Compose #$i")
         }
     }
